@@ -1,0 +1,31 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="Aliev Rustam" id="createUserTable">
+        <createTable tableName="USERS">
+            <column name="ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="LAST_NAME" type="VARCHAR(255)"/>
+            <column name="BIRTH_DATE" type="DATE"/>
+            <column name="ADDRESS" type="VARCHAR(1000)"/>
+            <column name="ABOUT" type="VARCHAR(5000)"/>
+        </createTable>
+        <createSequence sequenceName="USERS_SEQ"/>
+        <createIndex tableName="USERS" indexName="USERS_NAME_IDX">
+            <column name="NAME"/>
+        </createIndex>
+        <createIndex tableName="USERS" indexName="USERS_LAST_NAME_IDX">
+            <column name="LAST_NAME"/>
+        </createIndex>
+        <createIndex tableName="USERS" indexName="USERS_NAME_AND_LAST_NAME_IDX">
+            <column name="NAME"/>
+            <column name="LAST_NAME"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
